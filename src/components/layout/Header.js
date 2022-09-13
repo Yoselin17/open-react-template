@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Logo from './partials/Logo';
 
 const propTypes = {
@@ -34,7 +34,7 @@ const Header = ({
 
   const nav = useRef(null);
   const hamburger = useRef(null);
-
+  const history = useHistory();
   useEffect(() => {
     isActive && openMenu();
     document.addEventListener('keydown', keyPress);
@@ -56,6 +56,14 @@ const Header = ({
     document.body.classList.remove('off-nav-is-active');
     nav.current && (nav.current.style.maxHeight = null);
     setIsactive(false);
+  }
+
+  const signup = () => {
+    history.push("../signup", { replace: true });
+  }
+
+  const login = () => {
+    history.push("../login", { replace: true });
   }
 
   const keyPress = (e) => {
@@ -120,7 +128,10 @@ const Header = ({
                       className="list-reset header-nav-right"
                     >
                       <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
+                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={signup}>Sign up</Link>
+                      </li>
+                      <li>
+                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={login}>Login</Link>
                       </li>
                     </ul>}
                 </div>

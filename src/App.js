@@ -3,12 +3,19 @@ import { useLocation, Switch } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
+import injectContext from './store/appContext';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
 
+import CreatePage from './components/sections/CreatePage';
+import UpdatePage from './components/sections/UpdatePage';
+
 // Views 
 import Home from './views/Home';
+import Login from './views/Login';
+import Admin from './views/Admin';
+import SignUp from './views/SignUp';
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -37,9 +44,14 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute path="/login" component={Login}/>
+          <AppRoute path="/admin" component={Admin}/>
+          <AppRoute path="/signup" component={SignUp}/>
+          <AppRoute path="/createPage" component={CreatePage}/>
+          <AppRoute path="/updatePage" component={UpdatePage}/>
         </Switch>
       )} />
   );
 }
 
-export default App;
+export default injectContext(App);
