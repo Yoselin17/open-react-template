@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { useLocation, Switch } from 'react-router-dom';
+import { useLocation, Switch, Route } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import injectContext from './store/appContext';
+
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
@@ -44,11 +45,11 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
-          <AppRoute path="/login" component={Login}/>
-          <AppRoute path="/admin" component={Admin}/>
-          <AppRoute path="/signup" component={SignUp}/>
-          <AppRoute path="/createPage" component={CreatePage}/>
-          <AppRoute path="/updatePage" component={UpdatePage}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/admin" component={Admin}/>
+          <Route path="/signup" component={SignUp}/>
+          <Route path="/createPage" component={CreatePage}/>
+          <Route path="/updatePage" component={UpdatePage}/>
         </Switch>
       )} />
   );

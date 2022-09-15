@@ -13,7 +13,7 @@ const Admin = () => {
     useEffect(() => {
         
         if (token) {
-           //actions.getladingpage();
+           actions.getladingpage();
         } else {
             history.push("/login");
         }
